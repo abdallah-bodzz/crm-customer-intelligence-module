@@ -1,0 +1,67 @@
+{
+  "_comment": "CRM Action Queue — Rule Engine Configuration. Edit thresholds here without touching Python. CLI flags override at runtime for testing only — they do not write back to this file.",
+
+  "rules": {
+
+    "RETENTION_CAMPAIGN": {
+      "_description": "High-value customers at material churn risk. Premium retention spend is justified — losing these customers has the biggest GMV impact.",
+      "action_type": "RETENTION_CAMPAIGN",
+      "conditions": {
+        "churn_probability_gte": 0.6,
+        "clv_percentile_gte": 50
+      },
+      "priority": "HIGH",
+      "enabled": true
+    },
+
+    "REACTIVATION": {
+      "_description": "At-risk customers below median CLV. Worth a lower-cost nudge (voucher, email campaign) — not premium retention spend.",
+      "action_type": "REACTIVATION",
+      "conditions": {
+        "churn_probability_gte": 0.6,
+        "clv_percentile_lt": 50
+      },
+      "priority": "MED",
+      "enabled": true
+    },
+
+    "VIP_UPGRADE": {
+      "_description": "Champions (top RFM segment) whose predicted CLV is in the 90th percentile. Flag for loyalty programme, early access, or account manager outreach.",
+      "action_type": "VIP_UPGRADE",
+      "conditions": {
+        "rfm_segment_in": ["Champions"],
+        "clv_percentile_gte": 90
+      },
+      "priority": "MED",
+      "enabled": true
+    },
+
+    "MONITOR": {
+      "_description": "All other customers. No immediate action required. This is the unconditional catch-all — it MUST be last in evaluation_order and MUST have empty conditions.",
+      "_note": "Do NOT add conditions here. MONITOR catches every customer not matched by the rules above. Adding conditions would create an unmatched-customer gap and crash the pipeline.",
+      "action_type": "MONITOR",
+      "conditions": {},
+      "priority": "LOW",
+      "enabled": true
+    }
+
+  },
+
+  "evaluation_order": [
+    "RETENTION_CAMPAIGN",
+    "REACTIVATION",
+    "VIP_UPGRADE",
+    "MONITOR"
+  ],
+
+  "_evaluation_note": "Rules fire in this order. First match wins. MONITOR is last and unconditional — every customer not matched above lands here. AT_RISK_NURTURE was removed: the crm_action_queue CHECK constraint only allows RETENTION_CAMPAIGN, REACTIVATION, VIP_UPGRADE, MONITOR. At-risk customers (At Risk, Needs Attention, Can't Lose segments) with churn_probability >= 0.6 are captured by REACTIVATION; those below the threshold land in MONITOR. To add AT_RISK_NURTURE back, add it to the CHECK constraint in 05_crm_action_queue.sql first.",
+
+  "write_mode": "TRUNCATE_INSERT",
+  "_write_mode_note": "TRUNCATE_INSERT rebuilds the current-state snapshot every run. History is in mart.action_run_log, not in crm_action_queue itself.",
+
+  "audit": {
+    "write_run_log": true,
+    "run_log_table": "mart.action_run_log",
+    "_note": "Requires 09_action_run_log.sql to have been run. Set write_run_log=false to skip if the table doesn't exist yet."
+  }
+}
