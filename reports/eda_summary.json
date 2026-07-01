@@ -1,0 +1,71 @@
+{
+  "analysis_date": "2026-06-30T22:49:07.548047",
+  "bronze_load_verified": true,
+  "bronze_total_rows": 1550922,
+  "unique_customers": 96096,
+  "customer_id_records": 99441,
+  "scd2_required": true,
+  "multi_id_customer_count": 2997,
+  "multi_id_customer_pct": 3.12,
+  "max_customer_ids_per_customer": 17,
+  "data_first_order": "2016-09-04 21:15:19",
+  "data_last_order": "2018-10-17 17:30:18",
+  "ml_cutoff_date": "2018-05-01",
+  "train_pct": 74.0,
+  "test_pct": 26.0,
+  "churn_definition_days": 180,
+  "churn_as_of_date": "2018-10-17",
+  "churn_rate_pct": 71.18,
+  "one_time_buyer_pct": 96.88,
+  "vader_include": true,
+  "review_text_coverage_pct": 41.29,
+  "total_reviews": 99224,
+  "avg_delivery_delta_days": -11.0,
+  "pct_late_deliveries": 8.11,
+  "worst_delivery_states": [
+    "CE",
+    "BA",
+    "ES",
+    "MA",
+    "AL"
+  ],
+  "best_delivery_states": [
+    "RO",
+    "AM",
+    "PA",
+    "MT",
+    "PE"
+  ],
+  "primary_payment_method": "credit_card",
+  "avg_order_value": 137.42,
+  "median_order_value": 86.9,
+  "top20_pct_customers_gmv_share": 56.8,
+  "top_states_by_gmv": [
+    "SP",
+    "RJ",
+    "MG",
+    "RS",
+    "PR"
+  ],
+  "top_states_customer_share_pct": 77.1,
+  "top_states_gmv_share_pct": 73.9,
+  "features_carried_forward": [
+    "order_count",
+    "total_gmv",
+    "avg_review_score",
+    "avg_delivery_delta",
+    "pct_late"
+  ],
+  "high_multicollinearity_pairs": [
+    {
+      "feature_1": "total_gmv",
+      "feature_2": "avg_item_price",
+      "correlation": 0.9136895110590653
+    },
+    {
+      "feature_1": "avg_delivery_delta",
+      "feature_2": "pct_late",
+      "correlation": 0.6063474409806727
+    }
+  ]
+}
