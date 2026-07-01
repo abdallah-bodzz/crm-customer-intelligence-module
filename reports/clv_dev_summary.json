@@ -1,0 +1,88 @@
+{
+  "analysis_date": "2026-07-01T06:03:59.284055",
+  "ml_cutoff_date": "2018-05-01",
+  "train_size": 56948,
+  "test_size": 14238,
+  "zero_target_pct": 99.21473323406288,
+  "repurchaser_pct": 0.7853,
+  "repurchaser_feature_comparison": {
+    "total_orders_pre_cutoff": {
+      "non_repurchaser_mean": 1.033,
+      "repurchaser_mean": 1.17,
+      "ratio": 1.13
+    },
+    "avg_order_value_pre_cutoff": {
+      "non_repurchaser_mean": 158.406,
+      "repurchaser_mean": 138.828,
+      "ratio": 0.88
+    },
+    "days_since_last_order_pre_cutoff": {
+      "non_repurchaser_mean": 183.4,
+      "repurchaser_mean": 151.653,
+      "ratio": 0.83
+    },
+    "tenure_months_pre_cutoff": {
+      "non_repurchaser_mean": 0.062,
+      "repurchaser_mean": 0.441,
+      "ratio": 7.06
+    },
+    "total_categories_purchased": {
+      "non_repurchaser_mean": 1.015,
+      "repurchaser_mean": 1.098,
+      "ratio": 1.08
+    },
+    "avg_delivery_delta": {
+      "non_repurchaser_mean": -11.552,
+      "repurchaser_mean": -11.579,
+      "ratio": 1.0
+    },
+    "pct_late": {
+      "non_repurchaser_mean": 0.085,
+      "repurchaser_mean": 0.077,
+      "ratio": 0.91
+    }
+  },
+  "metrics": {
+    "mae": 2.33,
+    "rmse": 17.08,
+    "r2": -0.0403
+  },
+  "top_10_features": [
+    {
+      "feature": "days_since_last_order_pre_cutoff",
+      "importance": 0.3626
+    },
+    {
+      "feature": "order_frequency_per_month_pre_cutoff",
+      "importance": 0.1312
+    },
+    {
+      "feature": "avg_order_value_pre_cutoff",
+      "importance": 0.1231
+    },
+    {
+      "feature": "total_categories_purchased",
+      "importance": 0.1174
+    },
+    {
+      "feature": "total_orders_pre_cutoff",
+      "importance": 0.0901
+    },
+    {
+      "feature": "tenure_months_pre_cutoff",
+      "importance": 0.0767
+    },
+    {
+      "feature": "avg_delivery_delta",
+      "importance": 0.0744
+    },
+    {
+      "feature": "pct_late",
+      "importance": 0.0244
+    },
+    {
+      "feature": "is_single_order",
+      "importance": 0.0
+    }
+  ]
+}

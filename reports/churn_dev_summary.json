@@ -1,0 +1,51 @@
+{
+  "analysis_date": "2026-06-26T20:57:10.220602",
+  "churn_rate_overall": 0.7097485847485847,
+  "best_threshold_demo": 0.36300983206810783,
+  "best_f1_demo": 0.9999633444521828,
+  "roc_auc_demo": 0.9999999605798126,
+  "numeric_features": [
+    "days_since_last_order",
+    "total_orders",
+    "total_gmv",
+    "total_freight_paid",
+    "avg_order_value",
+    "avg_review_score",
+    "pct_negative_reviews",
+    "avg_sentiment_score",
+    "avg_delivery_delta_days",
+    "pct_late_deliveries",
+    "total_categories_purchased"
+  ],
+  "correlation_with_target": {
+    "days_since_last_order": 0.7195043729655601,
+    "pct_negative_reviews": 0.061299119243513785,
+    "avg_delivery_delta_days": 0.05751257184585633,
+    "pct_late_deliveries": 0.04629087532445369,
+    "avg_order_value": -0.011206022455802836,
+    "total_gmv": -0.013707979962110458,
+    "total_orders": -0.016481384181959505,
+    "avg_sentiment_score": -0.03567901623479661,
+    "total_categories_purchased": -0.03897632169142532,
+    "total_freight_paid": -0.040665952272622596,
+    "avg_review_score": -0.07424930743727091
+  },
+  "segment_churn_rates": {
+    "At Risk": 1.0,
+    "Can't Lose": 1.0,
+    "Hibernating": 1.0,
+    "Lost": 1.0,
+    "Needs Attention": 1.0,
+    "Frequent Low-Spender": 0.6404964191984343,
+    "Loyal": 0.3525426368662877,
+    "Potential Loyalist": 0.27270147559591373,
+    "Champions": 0.0
+  },
+  "top_correlated_features": [
+    "days_since_last_order",
+    "avg_review_score",
+    "pct_negative_reviews",
+    "avg_delivery_delta_days",
+    "pct_late_deliveries"
+  ]
+}

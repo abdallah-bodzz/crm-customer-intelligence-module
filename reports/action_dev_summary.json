@@ -1,0 +1,175 @@
+{
+  "analysis_date": "2026-06-26T23:03:49.663961",
+  "total_customers": 96096,
+  "action_distribution": {
+    "MONITOR": 57565,
+    "REACTIVATION": 26574,
+    "RETENTION_CAMPAIGN": 11957
+  },
+  "priority_distribution": {
+    "LOW": 57565,
+    "MED": 26574,
+    "HIGH": 11957
+  },
+  "segment_action_cross": {
+    "MONITOR": {
+      "At Risk": 2730,
+      "Can't Lose": 1678,
+      "Champions": 3516,
+      "Frequent Low-Spender": 16734,
+      "Hibernating": 7475,
+      "Lost": 335,
+      "Loyal": 11086,
+      "Needs Attention": 4751,
+      "Potential Loyalist": 9260
+    },
+    "REACTIVATION": {
+      "At Risk": 7063,
+      "Can't Lose": 6750,
+      "Champions": 291,
+      "Frequent Low-Spender": 1924,
+      "Hibernating": 2994,
+      "Lost": 11,
+      "Loyal": 906,
+      "Needs Attention": 5881,
+      "Potential Loyalist": 754
+    },
+    "RETENTION_CAMPAIGN": {
+      "At Risk": 630,
+      "Can't Lose": 418,
+      "Champions": 0,
+      "Frequent Low-Spender": 3823,
+      "Hibernating": 2115,
+      "Lost": 29,
+      "Loyal": 849,
+      "Needs Attention": 3535,
+      "Potential Loyalist": 558
+    }
+  },
+  "health_tier_action_cross": {
+    "MONITOR": {
+      "High": 3891,
+      "Low": 25105,
+      "Medium": 28569
+    },
+    "REACTIVATION": {
+      "High": 296,
+      "Low": 23522,
+      "Medium": 2756
+    },
+    "RETENTION_CAMPAIGN": {
+      "High": 8,
+      "Low": 7687,
+      "Medium": 4262
+    }
+  },
+  "profile_by_action": {
+    "churn_probability": {
+      "MONITOR": 0.41,
+      "REACTIVATION": 0.76,
+      "RETENTION_CAMPAIGN": 0.72
+    },
+    "clv_predicted": {
+      "MONITOR": 1.46,
+      "REACTIVATION": 0.74,
+      "RETENTION_CAMPAIGN": 1.36
+    },
+    "customer_health_score": {
+      "MONITOR": 52.61,
+      "REACTIVATION": 32.6,
+      "RETENTION_CAMPAIGN": 44.5
+    },
+    "total_orders": {
+      "MONITOR": 1.05,
+      "REACTIVATION": 1.01,
+      "RETENTION_CAMPAIGN": 1.02
+    },
+    "total_gmv": {
+      "MONITOR": 197.86,
+      "REACTIVATION": 94.84,
+      "RETENTION_CAMPAIGN": 161.69
+    },
+    "avg_order_value": {
+      "MONITOR": 190.15,
+      "REACTIVATION": 94.21,
+      "RETENTION_CAMPAIGN": 159.54
+    },
+    "avg_review_score": {
+      "MONITOR": 4.22,
+      "REACTIVATION": 3.95,
+      "RETENTION_CAMPAIGN": 3.74
+    },
+    "avg_sentiment_score": {
+      "MONITOR": 0.22,
+      "REACTIVATION": 0.19,
+      "RETENTION_CAMPAIGN": 0.16
+    },
+    "days_since_last_order": {
+      "MONITOR": 244.08,
+      "REACTIVATION": 367.12,
+      "RETENTION_CAMPAIGN": 324.49
+    }
+  },
+  "median_clv": 0.93,
+  "state_action_cross_top10": {
+    "MONITOR": {
+      "SP": 28353,
+      "RJ": 5818,
+      "MG": 5565,
+      "RS": 2609,
+      "PR": 2456,
+      "SC": 1697,
+      "BA": 2003,
+      "DF": 1228,
+      "ES": 984,
+      "GO": 1022
+    },
+    "REACTIVATION": {
+      "SP": 8221,
+      "RJ": 4449,
+      "MG": 3820,
+      "RS": 1853,
+      "PR": 1750,
+      "SC": 1287,
+      "BA": 1024,
+      "DF": 591,
+      "ES": 693,
+      "GO": 658
+    },
+    "RETENTION_CAMPAIGN": {
+      "SP": 3720,
+      "RJ": 2116,
+      "MG": 1870,
+      "RS": 813,
+      "PR": 674,
+      "SC": 545,
+      "BA": 249,
+      "DF": 254,
+      "ES": 287,
+      "GO": 270
+    }
+  },
+  "top_trigger_reasons": {
+    "MONITOR": {
+      "No high-priority conditions met \u2014 churn=0.333, segment=Loyal, CLV NULL at 0th pct, health=Medium": 29,
+      "No high-priority conditions met \u2014 churn=0.409, segment=Loyal, CLV NULL at 0th pct, health=Medium": 26,
+      "No high-priority conditions met \u2014 churn=0.433, segment=Frequent Low-Spender, CLV NULL at 0th pct, health=Medium": 26,
+      "No high-priority conditions met \u2014 churn=0.588, segment=Frequent Low-Spender, CLV NULL at 0th pct, health=Medium": 25,
+      "No high-priority conditions met \u2014 churn=0.331, segment=Loyal, CLV NULL at 0th pct, health=Medium": 24
+    },
+    "RETENTION_CAMPAIGN": {
+      "Churn risk 0.837 \u2265 0.60; CLV R$0.96 at 55th pct (\u2265 50th) \u2014 high-value customer, premium retention warranted": 43,
+      "Churn risk 0.927 \u2265 0.60; CLV R$0.94 at 51th pct (\u2265 50th) \u2014 high-value customer, premium retention warranted": 32,
+      "Churn risk 0.928 \u2265 0.60; CLV R$0.96 at 55th pct (\u2265 50th) \u2014 high-value customer, premium retention warranted": 31,
+      "Churn risk 0.794 \u2265 0.60; CLV R$0.96 at 55th pct (\u2265 50th) \u2014 high-value customer, premium retention warranted": 27,
+      "Churn risk 0.928 \u2265 0.60; CLV R$0.94 at 51th pct (\u2265 50th) \u2014 high-value customer, premium retention warranted": 23
+    },
+    "REACTIVATION": {
+      "Churn risk 0.837 \u2265 0.60; CLV R$0.91 at 46th pct (< 50th) \u2014 lower-value at-risk, cost-efficient reactivation": 126,
+      "Churn risk 0.927 \u2265 0.60; CLV R$0.90 at 41th pct (< 50th) \u2014 lower-value at-risk, cost-efficient reactivation": 93,
+      "Churn risk 0.829 \u2265 0.60; CLV R$0.90 at 41th pct (< 50th) \u2014 lower-value at-risk, cost-efficient reactivation": 83,
+      "Churn risk 0.755 \u2265 0.60; CLV R$0.90 at 41th pct (< 50th) \u2014 lower-value at-risk, cost-efficient reactivation": 82,
+      "Churn risk 0.794 \u2265 0.60; CLV R$0.91 at 46th pct (< 50th) \u2014 lower-value at-risk, cost-efficient reactivation": 80
+    }
+  }
+}

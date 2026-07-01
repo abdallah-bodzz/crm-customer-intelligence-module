@@ -1,0 +1,24 @@
+{
+  "analysis_date": "2026-06-26T20:55:47.936139",
+  "total_customers": 96096,
+  "segment_distribution": {
+    "Frequent Low-Spender": 22481,
+    "Needs Attention": 14167,
+    "Loyal": 12841,
+    "Hibernating": 12584,
+    "Potential Loyalist": 10572,
+    "At Risk": 10423,
+    "Can't Lose": 8846,
+    "Champions": 3807,
+    "Lost": 375
+  },
+  "optimal_k_elbow": 5,
+  "best_silhouette": 0.3360982672659793,
+  "kmeans_cluster_sizes": {
+    "0": 21177,
+    "1": 25597,
+    "2": 19994,
+    "3": 13666,
+    "4": 15662
+  }
+}
