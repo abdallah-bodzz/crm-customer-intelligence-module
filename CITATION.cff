@@ -1,0 +1,133 @@
+cff-version: 1.2.0
+
+# ----------------------------------------------------------------------------
+# CITATION.cff
+# CRM Customer Intelligence Module
+#
+# Cite this repository if you use the architecture patterns, SQL ETL
+# procedures, ML pipeline design, survival-analysis approach, Power BI
+# themes, or any other artefacts from this project in your own work.
+# ----------------------------------------------------------------------------
+
+message: >
+  If you use any part of this project — the medallion lakehouse schema,
+  ML pipeline design, Weibull AFT next-purchase model, Portuguese sentiment
+  integration, Power BI themes, or CRM action queue pattern — please cite
+  it using the metadata below.
+
+title: "CRM Customer Intelligence Module"
+
+abstract: >
+  A production-grade CRM intelligence system built on a medallion lakehouse
+  (Bronze → Silver → Gold) in SQL Server, with a Python ML pipeline running
+  five models (Portuguese sentiment analysis via LeIA, RFM rule-based
+  segmentation + K-means clustering, XGBoost CLV with quantile confidence
+  intervals, XGBoost churn classification with F1-tuned threshold, and
+  Weibull AFT survival analysis for next-purchase timing), a JSON-driven
+  CRM action queue rule engine, and seven Power BI dashboards. Applied to
+  the Olist Brazilian E-Commerce Public Dataset (96,096 unified customers,
+  R$15.84M GMV). Includes two complete custom Power BI JSON theme files
+  (Warm Clay and Ember) submitted to the Microsoft Fabric Community Themes
+  Gallery.
+
+authors:
+  - family-names: "Khames"
+    given-names: "Abdallah A"
+    alias: "abdallah-bodzz"
+    affiliation: "BODZZ"
+
+repository-code: "https://github.com/abdallah-bodzz/crm-customer-intelligence-module"
+
+license: MIT
+
+version: "1.0.0"
+
+date-released: "2026-06-30"
+
+keywords:
+  - CRM
+  - customer intelligence
+  - medallion lakehouse
+  - SQL Server
+  - SCD Type 2
+  - RFM segmentation
+  - K-means clustering
+  - customer lifetime value
+  - churn prediction
+  - XGBoost
+  - survival analysis
+  - Weibull AFT
+  - next-purchase timing
+  - sentiment analysis
+  - LeIA
+  - Portuguese NLP
+  - Power BI
+  - DAX
+  - data engineering
+  - data warehouse
+  - star schema
+  - e-commerce analytics
+  - Brazilian e-commerce
+  - Olist
+
+type: software
+
+references:
+  - type: dataset
+    title: "Brazilian E-Commerce Public Dataset by Olist"
+    authors:
+      - name: "Olist"
+    url: "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce"
+    license: "CC-BY-NC-SA-4.0"
+    notes: >
+      Raw CSV files are not redistributed in this repository. Download
+      directly from Kaggle and place under
+      data/raw/Brazilian E-Commerce Public Dataset by Olist/
+
+  - type: software
+    title: "LeIA — Léxico para Inferência Adaptada"
+    authors:
+      - family-names: "Ferreira"
+        given-names: "Rafael"
+        alias: "rafjaa"
+    url: "https://github.com/rafjaa/LeIA"
+    license: MIT
+    notes: >
+      Portuguese-lexicon fork of VADER used for sentiment scoring of
+      Brazilian Portuguese review text. Bundled locally in python/LeIA_lib/.
+
+  - type: software
+    title: "XGBoost: A Scalable Tree Boosting System"
+    authors:
+      - family-names: "Chen"
+        given-names: "Tianqi"
+      - family-names: "Guestrin"
+        given-names: "Carlos"
+    doi: "10.1145/2939672.2939785"
+    url: "https://github.com/dmlc/xgboost"
+    notes: >
+      Used for CLV point estimation + quantile CI (objective='reg:quantileerror')
+      and churn classification (objective='binary:logistic', F1-tuned threshold).
+
+  - type: software
+    title: "lifelines: Survival Analysis in Python"
+    authors:
+      - family-names: "Davidson-Pilon"
+        given-names: "Cameron"
+    url: "https://github.com/CamDavidsonPilon/lifelines"
+    license: MIT
+    notes: >
+      WeibullAFTFitter used for next-purchase timing. predict_median with
+      conditional_after parameter provides T|T>s — expected remaining time
+      correctly conditioned on the customer's elapsed waiting period.
+
+  - type: software
+    title: "scikit-learn: Machine Learning in Python"
+    authors:
+      - name: "scikit-learn developers"
+    url: "https://github.com/scikit-learn/scikit-learn"
+    license: "BSD-3-Clause"
+    notes: >
+      K-means clustering and silhouette scoring for RFM segmentation.
+      silhouette_score sample_size parameter critical for performance
+      at 96k-row scale (reduced from 854s to ~20s wall time).
