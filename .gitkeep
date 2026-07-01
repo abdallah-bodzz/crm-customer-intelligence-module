@@ -1,0 +1,20 @@
+-- INSTRUCTION --
+Create these empty files in your repo to preserve the directory structure
+(git doesn't track empty directories):
+
+  data/.gitkeep
+  data/raw/.gitkeep
+  data/raw/Brazilian E-Commerce Public Dataset by Olist/.gitkeep
+  data/raw/Marketing Funnel by Olist/.gitkeep
+  python/models/.gitkeep
+  python/logs/.gitkeep
+  python/logs/manifests/.gitkeep
+
+Command (run from repo root):
+  touch data/.gitkeep
+  touch "data/raw/.gitkeep"
+  touch "data/raw/Brazilian E-Commerce Public Dataset by Olist/.gitkeep"
+  touch "data/raw/Marketing Funnel by Olist/.gitkeep"
+  touch python/models/.gitkeep
+  touch python/logs/.gitkeep
+  touch python/logs/manifests/.gitkeep
