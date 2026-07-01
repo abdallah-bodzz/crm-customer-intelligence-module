@@ -1,0 +1,506 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.bp{padding:0 0 2rem}
+.phase-header{display:flex;align-items:center;gap:10px;padding:1rem 1.25rem 0.75rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.phase-badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.phase-title{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.phase-meta{font-size:12px;color:var(--color-text-tertiary);margin-left:auto;white-space:nowrap}
+.phase-body{padding:0.85rem 1.25rem}
+.phase-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:0.75rem;overflow:hidden;background:var(--color-background-primary)}
+.task-row{display:flex;align-items:flex-start;gap:10px;padding:0.6rem 1.25rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.task-row:last-child{border-bottom:none}
+.task-icon{font-size:15px;margin-top:1px;flex-shrink:0}
+.task-main{flex:1;min-width:0}
+.task-name{font-size:13px;font-weight:500;color:var(--color-text-primary);line-height:1.4}
+.task-detail{font-size:12px;color:var(--color-text-secondary);margin-top:2px;line-height:1.5}
+.tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;display:inline-block;margin-top:4px}
+.tag-sql{background:var(--color-background-info);color:var(--color-text-info)}
+.tag-py{background:#EAF3DE;color:#27500A}
+.tag-bi{background:#FAEEDA;color:#633806}
+.tag-doc{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.tag-ml{background:#EEEDFE;color:#3C3489}
+.connector{display:flex;justify-content:center;padding:4px 0;color:var(--color-text-tertiary);font-size:18px}
+.section-label{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:0.5rem 1.25rem 0.25rem;margin-top:0.25rem}
+.deliverable-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;padding:0.75rem 1.25rem 1rem}
+.del-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.65rem 0.75rem}
+.del-icon{font-size:16px;color:var(--color-text-secondary)}
+.del-name{font-size:12px;font-weight:500;color:var(--color-text-primary);margin-top:4px;line-height:1.3}
+.del-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:2px}
+.stack-row{display:flex;flex-wrap:wrap;gap:6px;padding:0.75rem 1.25rem 1rem}
+.stack-pill{font-size:12px;padding:4px 12px;border:0.5px solid var(--color-border-secondary);border-radius:20px;color:var(--color-text-secondary)}
+.warn-box{margin:0.75rem 1.25rem;padding:0.65rem 0.9rem;background:var(--color-background-warning);border-radius:var(--border-radius-md);font-size:12px;color:var(--color-text-warning);line-height:1.5}
+.tip-box{margin:0.75rem 1.25rem;padding:0.65rem 0.9rem;background:var(--color-background-info);border-radius:var(--border-radius-md);font-size:12px;color:var(--color-text-info);line-height:1.5}
+</style>
+
+<div class="bp">
+
+<div class="phase-card">
+  <div class="phase-header">
+    <span class="phase-badge" style="background:#E1F5EE;color:#085041">Phase 0</span>
+    <span class="phase-title">Environment & repo setup</span>
+    <span class="phase-meta">Day 1 · 2–3 hrs</span>
+  </div>
+  <div class="phase-body">
+    <div class="task-row">
+      <i class="ti ti-folder task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Create repo structure</div>
+        <div class="task-detail">Full folder tree: sql/ python/ notebooks/ powerbi/ docs/ case_study/ reports/. Add .gitignore, README skeleton, CITATION.cff for Olist attribution.</div>
+        <span class="tag tag-doc">git</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-database task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">SQL Server — create schemas</div>
+        <div class="task-detail">Run create_schemas.sql — three schemas: staging, warehouse, mart. Verify permissions and collation (Latin1_General_CI_AS for Portuguese text).</div>
+        <span class="tag tag-sql">SQL Server</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-settings task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Python venv + requirements</div>
+        <div class="task-detail">pyodbc, pandas, numpy, scikit-learn, xgboost, lifelines, vaderSentiment, sqlalchemy, python-dotenv, rich (for CLI output). Pin versions. .env for DB creds — never commit.</div>
+        <span class="tag tag-py">Python 3.11+</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-download task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Download & inspect dataset</div>
+        <div class="task-detail">Kaggle API pull. Inspect all 9 CSVs. Confirm row counts, nulls, encoding (UTF-8 with BOM on some files — handle this in ingest). Note the customer_id vs customer_unique_id split immediately.</div>
+        <span class="tag tag-doc">data audit</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<div class="phase-card">
+  <div class="phase-header">
+    <span class="phase-badge" style="background:#9FE1CB;color:#085041">Phase 1</span>
+    <span class="phase-title">Bronze layer — raw ingest</span>
+    <span class="phase-meta">Days 1–2 · 4–6 hrs</span>
+  </div>
+  <div class="phase-body">
+    <div class="task-row">
+      <i class="ti ti-file-import task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Python ingest script</div>
+        <div class="task-detail">python/ingest.py — reads each CSV, adds load_timestamp + source_file columns, bulk-inserts into staging.stg_* tables via SQLAlchemy. Handles BOM, encoding, chunked loading for large files. Idempotent: truncate-then-load.</div>
+        <span class="tag tag-py">ingest.py</span>
+        <span class="tag tag-sql">staging schema</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-table task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Staging DDL — 9 tables</div>
+        <div class="task-detail">stg_orders, stg_customers, stg_order_items, stg_order_payments, stg_order_reviews, stg_products, stg_sellers, stg_product_category_translation, stg_geolocation. All columns NVARCHAR — no transforms here. Add load metadata columns.</div>
+        <span class="tag tag-sql">01_staging/</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-check task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Row count verification</div>
+        <div class="task-detail">verify_all.sql — assert staging row counts match source CSV counts exactly. Fail loud if mismatch. Document expected counts in comments.</div>
+        <span class="tag tag-sql">07_verify/</span>
+      </div>
+    </div>
+    <div class="warn-box"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Watch: stg_geolocation has 1M+ rows and multiple zip codes per lat/lng. Load last, add index on zip_code immediately after insert.</div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<div class="phase-card">
+  <div class="phase-header">
+    <span class="phase-badge" style="background:#CECBF6;color:#3C3489">Phase 2</span>
+    <span class="phase-title">EDA — understand before you build</span>
+    <span class="phase-meta">Days 2–3 · 4–5 hrs</span>
+  </div>
+  <div class="phase-body">
+    <div class="task-row">
+      <i class="ti ti-chart-bar task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">01_eda.ipynb — full dataset profile</div>
+        <div class="task-detail">Null rates, cardinality, distributions. Key questions: What % of customer_unique_id appear more than once? What's the order date range? What's the delivery delay distribution? Review score distribution. State-level order volume.</div>
+        <span class="tag tag-py">notebooks/</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-users task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Customer identity analysis</div>
+        <div class="task-detail">Quantify the customer_id / customer_unique_id problem. How many unique customers? What's the max order count per customer_unique_id? This determines SCD2 complexity. Document findings — this goes in the README as a solved problem.</div>
+        <span class="tag tag-py">EDA</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-calendar task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Define train/test split cutoff</div>
+        <div class="task-detail">Dataset runs Sept 2016 – Oct 2018. Set cutoff at Sept 1 2018 — orders before = train, after = validation. This is your ML temporal split. Lock this now, do not change later.</div>
+        <span class="tag tag-doc">ML design</span>
+      </div>
+    </div>
+    <div class="tip-box"><i class="ti ti-bulb" aria-hidden="true"></i> Key finding to document: ~97% of customers have only 1 order. This is the churn definition problem — most customers look "churned" by default. Your model needs to handle this carefully. Flag it.</div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<div class="phase-card">
+  <div class="phase-header">
+    <span class="phase-badge" style="background:#AFA9EC;color:#26215C">Phase 3</span>
+    <span class="phase-title">Silver layer — warehouse build</span>
+    <span class="phase-meta">Days 3–5 · 8–10 hrs</span>
+  </div>
+  <div class="phase-body">
+    <div class="section-label">Core tables — build in this order</div>
+    <div class="task-row">
+      <i class="ti ti-user task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">dim_customer — SCD Type 2</div>
+        <div class="task-detail">Business key: customer_unique_id. Dedup logic: group customer_id entries by customer_unique_id, keep latest shipping address. Columns: customer_unique_id, customer_id_latest, zip_code, city, state, valid_from, valid_to, is_current, geo_lat, geo_lng (joined from geolocation via zip centroid).</div>
+        <span class="tag tag-sql">warehouse.dim_customer</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-calendar task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">dim_date — full calendar</div>
+        <div class="task-detail">Generate Sept 2016 – Dec 2018. Columns: date_key (INT YYYYMMDD), full_date, year, quarter, month, week, day_of_week, is_weekend, is_brazilian_holiday (manually populate public holidays), fiscal_month. Build once in SQL via recursive CTE or tally table.</div>
+        <span class="tag tag-sql">warehouse.dim_date</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-shopping-cart task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">fact_orders</div>
+        <div class="task-detail">One row per order. Key derived cols: delivery_delta_days (actual – estimated), is_late (bit), days_to_approve, days_to_carrier, order_status_clean. Join to dim_customer on customer_unique_id, dim_date on order purchase date. Include payment_total from payments rollup.</div>
+        <span class="tag tag-sql">warehouse.fact_orders</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-package task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">fact_order_items + dim_product + dim_seller</div>
+        <div class="task-detail">fact_order_items: one row per line item. Cols: price, freight_value, freight_ratio (freight/price), seller_id FK, product_id FK. dim_product: category (translated to English), weight, dimensions. dim_seller: seller_id, state, city.</div>
+        <span class="tag tag-sql">warehouse schema</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-star task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">dim_review</div>
+        <div class="task-detail">review_id, order_id, customer_unique_id (joined via order), review_score (INT 1–5), review_comment_title, review_comment_message (clean NVARCHAR, preserve Portuguese), review_creation_date, review_answer_timestamp. sentiment_compound left NULL here — populated by Python later.</div>
+        <span class="tag tag-sql">warehouse.dim_review</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-key task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Indexes + FK constraints</div>
+        <div class="task-detail">Index every FK column. Clustered index on fact tables by date_key. Non-clustered on customer_unique_id in all tables that carry it. Add CHECK constraints on review_score (1–5), is_late (0/1). Document in 06_indexes/ and 04_constraints/.</div>
+        <span class="tag tag-sql">06_indexes/</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<div class="phase-card">
+  <div class="phase-header">
+    <span class="phase-badge" style="background:#F0997B;color:#4A1B0C">Phase 4</span>
+    <span class="phase-title">Gold layer — CRM mart build</span>
+    <span class="phase-meta">Days 5–7 · 6–8 hrs</span>
+  </div>
+  <div class="phase-body">
+    <div class="task-row">
+      <i class="ti ti-user-circle task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">mart.customer_360</div>
+        <div class="task-detail">One row per customer_unique_id. Aggregated from warehouse: total_orders, total_gmv, avg_order_value, first_order_date, last_order_date, tenure_days, customer_state, customer_city, avg_review_score, avg_delivery_delta, pct_late_orders, preferred_payment_method, category_diversity_count. customer_health_score computed in SQL as weighted composite (recency + avg_score + pct_on_time).</div>
+        <span class="tag tag-sql">mart.customer_360</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-chart-dots task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">mart.rfm_features</div>
+        <div class="task-detail">Recency (days since last order from cutoff date), Frequency (total orders), Monetary (total GMV). Raw scores + NTILE(5) quintile ranks. Cols left NULL: rfm_segment, rfm_label, km_cluster — populated by Python segmentation run.</div>
+        <span class="tag tag-sql">mart.rfm_features</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-trending-up task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">mart.clv_features</div>
+        <div class="task-detail">Feature table for CLV model. Cols: customer_unique_id, avg_order_value, order_frequency_per_month, tenure_months, total_categories_purchased, preferred_payment_type, customer_state, pct_late_deliveries, avg_sentiment (NULL until Python), clv_predicted_6m (NULL until Python), clv_ci_lower, clv_ci_upper.</div>
+        <span class="tag tag-sql">mart.clv_features</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-message task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">mart.sentiment_scores</div>
+        <div class="task-detail">review_id, customer_unique_id, review_score, compound_score (NULL until Python), sentiment_label (NULL until Python), review_order_seq (1st, 2nd, 3rd review per customer — for sentiment trend). Indexed on customer_unique_id.</div>
+        <span class="tag tag-sql">mart.sentiment_scores</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-bell task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">mart.crm_action_queue</div>
+        <div class="task-detail">action_id (PK), customer_unique_id (FK), action_type (RETENTION_CAMPAIGN | REACTIVATION | VIP_UPGRADE | MONITOR | NONE), priority (HIGH | MED | LOW), churn_probability, clv_predicted_6m, trigger_reason (VARCHAR), created_at, is_actioned (BIT, default 0). Populated entirely by Python after all models run.</div>
+        <span class="tag tag-sql">mart.crm_action_queue</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-eye task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Views for Power BI</div>
+        <div class="task-detail">vw_customer_health (360 + rfm + clv + churn in one flat view), vw_churn_signals (churn features ranked by probability), vw_geo_performance (state-level aggregates: GMV, avg delay, churn rate, customer count). Power BI connects to views only — no direct mart table access.</div>
+        <span class="tag tag-sql">04_views/</span>
+        <span class="tag tag-bi">Power BI source</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<div class="phase-card">
+  <div class="phase-header">
+    <span class="phase-badge" style="background:#85B7EB;color:#042C53">Phase 5</span>
+    <span class="phase-title">Python ML pipeline</span>
+    <span class="phase-meta">Days 7–11 · 10–14 hrs</span>
+  </div>
+  <div class="phase-body">
+    <div class="section-label">Model 1 — sentiment (run first, feeds other models)</div>
+    <div class="task-row">
+      <i class="ti ti-message-2 task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">sentiment.py — VADER on review text</div>
+        <div class="task-detail">Pull review text from warehouse.dim_review. Run VADER SentimentIntensityAnalyzer on review_comment_message. Write compound_score + sentiment_label back to mart.sentiment_scores. Then aggregate per customer: avg_compound, sentiment_trend (last review score – first review score, positive = improving). Write avg_sentiment to mart.clv_features and mart.customer_360.</div>
+        <span class="tag tag-py">vaderSentiment</span>
+        <span class="tag tag-ml">NLP</span>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:0.5rem">Model 2 — RFM segmentation</div>
+    <div class="task-row">
+      <i class="ti ti-grid-dots task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">segmentation.py — RFM + K-means</div>
+        <div class="task-detail">Pull mart.rfm_features. Scale R/F/M with StandardScaler. Elbow + silhouette for K (expect K=4–6). Label clusters with business names (Champions / Loyal / At Risk / Hibernating / Lost / New). Write km_cluster + rfm_segment + rfm_label to mart.rfm_features. Save model as /models/kmeans_rfm.pkl.</div>
+        <span class="tag tag-py">scikit-learn</span>
+        <span class="tag tag-ml">unsupervised</span>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:0.5rem">Model 3 — CLV regression</div>
+    <div class="task-row">
+      <i class="ti ti-coin task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">clv_model.py — XGBoost regressor</div>
+        <div class="task-detail">Target: actual_gmv_post_cutoff (computed from fact_orders after Sept 2018). Features: all of mart.clv_features + avg_sentiment. Train/test temporal split. Tune with cross-val. Output: clv_predicted_6m + clv_ci_lower/upper (use quantile regression or bootstrap CIs). Write back to mart.clv_features. Save model as /models/xgb_clv.pkl. Log RMSE + MAE to reports/model_metrics.md.</div>
+        <span class="tag tag-py">xgboost</span>
+        <span class="tag tag-ml">regression</span>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:0.5rem">Model 4 — churn classifier</div>
+    <div class="task-row">
+      <i class="ti ti-user-minus task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">churn_model.py — XGBoost + threshold tuning</div>
+        <div class="task-detail">Churn definition: no order in 180 days from last_order_date (pre-cutoff customers only). Features: recency_days, order_frequency, avg_delivery_delta, avg_review_score, avg_sentiment, tenure_months, pct_late, state (encoded). Class imbalance: use scale_pos_weight. Tune threshold at 0.3 (not 0.5) — optimise for recall. Write churn_probability + is_churn_risk to mart.customer_360. Log precision/recall/F1/AUC. Save /models/xgb_churn.pkl.</div>
+        <span class="tag tag-py">xgboost</span>
+        <span class="tag tag-ml">classifier</span>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:0.5rem">Model 5 — next-purchase timing</div>
+    <div class="task-row">
+      <i class="ti ti-clock task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">next_purchase.py — Weibull AFT (lifelines)</div>
+        <div class="task-detail">Only run on customers with 2+ orders (inter-purchase intervals exist). Fit WeibullAFTFitter on duration (days between orders) + covariates (state, category, AOV bucket). Output: expected_next_purchase_days + survival probability at 30/60/90 days. Write to mart.customer_360. This is the differentiation model — document it prominently.</div>
+        <span class="tag tag-py">lifelines</span>
+        <span class="tag tag-ml">survival analysis</span>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:0.5rem">Post-ML — action queue population</div>
+    <div class="task-row">
+      <i class="ti ti-list-check task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Populate mart.crm_action_queue</div>
+        <div class="task-detail">Rule engine (Python, simple if-else on model outputs): churn_prob >= 0.6 AND clv_predicted > median → RETENTION_CAMPAIGN HIGH. churn_prob >= 0.6 AND clv_predicted <= median → REACTIVATION MED. rfm_segment = Champions → VIP_UPGRADE MED. All others → MONITOR LOW. Truncate-then-insert. Every customer gets exactly one action record.</div>
+        <span class="tag tag-py">run.py</span>
+        <span class="tag tag-sql">mart.crm_action_queue</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-file-analytics task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">dq_report.py — data quality HTML report</div>
+        <div class="task-detail">Auto-generate: null rates per column, outlier flags (IQR method on GMV + delivery delta), row counts per table, model metric summary. Output to reports/dq_report.html. Run this before and after each pipeline stage. Include in README as a screenshot.</div>
+        <span class="tag tag-py">dq_report.py</span>
+        <span class="tag tag-doc">reports/</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<div class="phase-card">
+  <div class="phase-header">
+    <span class="phase-badge" style="background:#97C459;color:#173404">Phase 6</span>
+    <span class="phase-title">Power BI — 6 dashboards</span>
+    <span class="phase-meta">Days 11–15 · 8–10 hrs</span>
+  </div>
+  <div class="phase-body">
+    <div class="deliverable-grid">
+      <div class="del-card">
+        <i class="ti ti-user-circle del-icon" aria-hidden="true"></i>
+        <div class="del-name">Customer 360</div>
+        <div class="del-sub">Unified CRM profile view</div>
+      </div>
+      <div class="del-card">
+        <i class="ti ti-grid-dots del-icon" aria-hidden="true"></i>
+        <div class="del-name">Segmentation</div>
+        <div class="del-sub">RFM scatter + clusters</div>
+      </div>
+      <div class="del-card">
+        <i class="ti ti-user-minus del-icon" aria-hidden="true"></i>
+        <div class="del-name">Churn risk</div>
+        <div class="del-sub">Ranked risk + drivers</div>
+      </div>
+      <div class="del-card">
+        <i class="ti ti-coin del-icon" aria-hidden="true"></i>
+        <div class="del-name">CLV & LTV</div>
+        <div class="del-sub">Predicted value dist.</div>
+      </div>
+      <div class="del-card">
+        <i class="ti ti-map del-icon" aria-hidden="true"></i>
+        <div class="del-name">Geo intelligence</div>
+        <div class="del-sub">Brazil territory map</div>
+      </div>
+      <div class="del-card">
+        <i class="ti ti-message-2 del-icon" aria-hidden="true"></i>
+        <div class="del-name">Sentiment & NLP</div>
+        <div class="del-sub">Review analytics</div>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-layout task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Data model — DirectQuery via views</div>
+        <div class="task-detail">Connect Power BI to SQL Server. Import mode on dim tables, DirectQuery on fact/mart views. Star schema in Power BI model. All measures in a dedicated Measures table. No calculated columns in PBI — do all math in SQL views.</div>
+        <span class="tag tag-bi">Power BI</span>
+      </div>
+    </div>
+    <div class="tip-box"><i class="ti ti-bulb" aria-hidden="true"></i> Page 1 (Customer 360) should work as a drill-through target from every other page — click any customer row and land on their full profile. Set this up early; it's the "wow" moment for reviewers.</div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<div class="phase-card">
+  <div class="phase-header">
+    <span class="phase-badge" style="background:#EAF3DE;color:#27500A">Phase 7</span>
+    <span class="phase-title">Documentation & portfolio finish</span>
+    <span class="phase-meta">Days 15–17 · 4–5 hrs</span>
+  </div>
+  <div class="phase-body">
+    <div class="task-row">
+      <i class="ti ti-file-text task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">README.md — consultant-framed</div>
+        <div class="task-detail">Open with: "CRM Customer Intelligence Module — Olist E-Commerce Implementation. Modeled after SAP CRM / Odoo CRM customer entity structure." Then: problem statement, architecture diagram (embed the one from this session), tech stack, how to run, key findings section (3–4 business insights), model metrics table. No academic language — write like a consultant's project summary.</div>
+        <span class="tag tag-doc">README</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-book task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">docs/data_dictionary.md</div>
+        <div class="task-detail">Every mart table, every column, type, description, and source. This is what separates a serious project from a notebook. One table per markdown section.</div>
+        <span class="tag tag-doc">docs/</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-briefcase task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-name">case_study/business_case.md</div>
+      <div class="task-main">
+        <div class="task-detail">Write a fictional Olist CRM engagement narrative: "Challenge → Approach → Solution → Results." Quantify: "Identified 3,200 high-value customers at churn risk representing R$1.2M in predicted 6-month GMV." This is what goes in your CV bullet point.</div>
+        <span class="tag tag-doc">case_study/</span>
+      </div>
+    </div>
+    <div class="task-row">
+      <i class="ti ti-photo task-icon" style="color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div class="task-main">
+        <div class="task-name">Screenshots + PDF export</div>
+        <div class="task-detail">6 dashboard screenshots in powerbi/screenshots/. Export full .pbix + a PDF version of the report. The PDF means anyone can review the dashboards without Power BI Desktop.</div>
+        <span class="tag tag-bi">powerbi/</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<div class="phase-card">
+  <div class="phase-header">
+    <span class="phase-badge" style="background:#F1EFE8;color:#444441">Stack</span>
+    <span class="phase-title">Full technology stack</span>
+    <span class="phase-meta">Fixed · same signature as Project 1</span>
+  </div>
+  <div class="stack-row">
+    <span class="stack-pill">SQL Server 2019+</span>
+    <span class="stack-pill">Python 3.11</span>
+    <span class="stack-pill">pandas + SQLAlchemy</span>
+    <span class="stack-pill">XGBoost</span>
+    <span class="stack-pill">scikit-learn</span>
+    <span class="stack-pill">lifelines (survival)</span>
+    <span class="stack-pill">vaderSentiment</span>
+    <span class="stack-pill">Power BI Desktop</span>
+    <span class="stack-pill">Jupyter</span>
+    <span class="stack-pill">Git + GitHub</span>
+    <span class="stack-pill">python-dotenv</span>
+    <span class="stack-pill">rich (CLI)</span>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:0.75rem">
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.85rem 1rem">
+    <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px">Timeline</div>
+    <div style="font-size:12px;color:var(--color-text-secondary);line-height:2">
+      Phase 0–1: Days 1–2<br>
+      Phase 2–3: Days 2–5<br>
+      Phase 4: Days 5–7<br>
+      Phase 5: Days 7–11<br>
+      Phase 6: Days 11–15<br>
+      Phase 7: Days 15–17
+    </div>
+    <div style="font-size:12px;font-weight:500;color:var(--color-text-secondary);margin-top:8px;padding-top:8px;border-top:0.5px solid var(--color-border-tertiary)">Total: ~17 working days · 40–55 hrs</div>
+  </div>
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.85rem 1rem">
+    <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px">Key deliverables</div>
+    <div style="font-size:12px;color:var(--color-text-secondary);line-height:2">
+      9 staging tables (Bronze)<br>
+      6 warehouse tables (Silver)<br>
+      6 mart tables + 3 views (Gold)<br>
+      5 Python ML models<br>
+      6 Power BI dashboards<br>
+      Data dictionary + case study
+    </div>
+  </div>
+</div>
+
+</div>
