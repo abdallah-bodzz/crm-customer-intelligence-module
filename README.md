@@ -13,6 +13,9 @@
 [![LeIA](https://img.shields.io/badge/LeIA-PT--BR_Sentiment-009B77?style=flat-square)](https://github.com/rafjaa/LeIA)
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Production_Ready-brightgreen?style=flat-square)]()
+[![Live Dashboard](https://img.shields.io/badge/Live_Dashboard-Power_BI-F2C811?style=flat-square&logo=powerbi&logoColor=black)](https://app.powerbi.com/view?r=eyJrIjoiMTBkZDE3YTMtNzZhZS00OWJlLWEyZTItM2U4NjQ4NjI4MzJiIiwidCI6ImVhZjYyNGM4LWEwYzQtNDE5NS04N2QyLTQ0M2U1ZDc1MTZjZCIsImMiOjh9)
+
+**[→ Open Live Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMTBkZDE3YTMtNzZhZS00OWJlLWEyZTItM2U4NjQ4NjI4MzJiIiwidCI6ImVhZjYyNGM4LWEwYzQtNDE5NS04N2QyLTQ0M2U1ZDc1MTZjZCIsImMiOjh9)** &nbsp;·&nbsp; *7-page interactive report · best viewed on desktop*
 
 **Lead Developer:** Abdallah A Khames &nbsp;·&nbsp; **Organisation:** [BODZZ](https://github.com/abdallah-bodzz) &nbsp;·&nbsp; **Version:** 1.0 &nbsp;·&nbsp; **Date:** June 2026
 
@@ -363,6 +366,8 @@ Seven pages built on imported Gold views. All DAX measures live in a dedicated `
 
 *Figure 7 — Stakeholder Mapping: dashboard pages mapped to business roles and decision workflows*
 
+**[→ Open Live Interactive Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMTBkZDE3YTMtNzZhZS00OWJlLWEyZTItM2U4NjQ4NjI4MzJiIiwidCI6ImVhZjYyNGM4LWEwYzQtNDE5NS04N2QyLTQ0M2U1ZDc1MTZjZCIsImMiOjh9)** — full 7-page report with drill-through, What-If simulator, and geo map. Best viewed on desktop.
+
 **Screenshots:**
 
 <table>
@@ -403,13 +408,12 @@ Both themes define:
 - Visual-specific overrides for every chart type in this report: cards, tables, matrices, line charts, scatter plots, filled maps, slicers, KPI visuals, funnels, and waterfall charts
 - Data color palettes with fixed segment-to-color assignments so RFM segment colors never shift between pages or refreshes
 
-I'm planning to submit both themes to the **Microsoft Fabric Community Themes Gallery**. When the submissions are accepted, the links will be added here.
+Both themes have been submitted to the **Microsoft Fabric Community Themes Gallery**:
 
-> *Pending submission:*
-> - **Warm Clay** — `[link to be added post-submission]`
-> - **Ember** — `[link to be added post-submission]`
+> - **Warm Clay** — [Published ↗](https://community.fabric.microsoft.com/t5/Themes-Gallery/Warm-Clay-Modern-CRM-amp-Enterprise-Dashboard-Theme/m-p/5261981)
+> - **Ember** — *submission pending*
 
-Both `.json` files are in `powerbi/`.
+Both `.json` files are in `powerbi/`. If you use either theme in your own reports, attribution is appreciated but not required.
 
 ---
 
