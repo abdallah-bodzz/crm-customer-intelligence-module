@@ -1,0 +1,214 @@
+# =============================================================================
+# .gitignore — CRM Customer Intelligence Module
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# SECRETS & CREDENTIALS — never commit these
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+secrets/
+credentials/
+
+
+# -----------------------------------------------------------------------------
+# DATA — raw CSVs are not redistributed (CC BY-NC-SA 4.0 dataset)
+# Download from: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+# -----------------------------------------------------------------------------
+data/raw/
+data/interim/
+data/processed/
+*.csv
+*.parquet
+*.feather
+*.arrow
+# Keep the directory structure
+!data/.gitkeep
+!data/raw/.gitkeep
+!data/raw/Brazilian E-Commerce Public Dataset by Olist/.gitkeep
+!data/raw/Marketing Funnel by Olist/.gitkeep
+
+
+# -----------------------------------------------------------------------------
+# PYTHON
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+env/
+venv/
+.venv/
+ENV/
+pip-wheel-metadata/
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+# Uncomment to also ignore executed notebook outputs (keep for this project):
+# *.ipynb
+
+# mypy / pyright / ruff
+.mypy_cache/
+.ruff_cache/
+.pyright/
+pyrightconfig.json
+
+
+# -----------------------------------------------------------------------------
+# ML MODELS — large binary artifacts
+# Saved to python/models/; excluded from git (use DVC or artifact storage)
+# -----------------------------------------------------------------------------
+python/models/*.json
+python/models/*.pkl
+python/models/*.bin
+python/models/*.pt
+python/models/*.pth
+# Keep the directory
+!python/models/.gitkeep
+
+
+# -----------------------------------------------------------------------------
+# LOGS — generated at runtime, not source-controlled
+# -----------------------------------------------------------------------------
+python/logs/
+logs/
+*.log
+python/logs/manifests/
+
+
+# -----------------------------------------------------------------------------
+# REPORTS — generated artifacts (html report, figures)
+# Figures are committed; the auto-generated html report is not
+# -----------------------------------------------------------------------------
+reports/dq_report.html
+# Keep figures and JSON summaries (they are source-tracked outputs):
+!reports/figures/
+!reports/*.json
+!reports/executive_report.md
+
+
+# -----------------------------------------------------------------------------
+# POWER BI — .pbix files are large binary files
+# PDFs and theme JSONs are committed; .pbix files should use Git LFS
+# or be excluded from the main branch and distributed separately
+# -----------------------------------------------------------------------------
+# Uncomment to exclude .pbix entirely:
+# powerbi/*.pbix
+# Video recordings are large — exclude by default
+powerbi/vid-recored/*.mp4
+# Keep the gif preview
+!powerbi/vid-recored/*.gif
+
+
+# -----------------------------------------------------------------------------
+# SQL SERVER / SSMS
+# -----------------------------------------------------------------------------
+*.bak
+*.mdf
+*.ldf
+*.ndf
+*.dacpac
+*.bacpac
+# SSMS solution files are local-only
+*.ssmssln
+*.ssmssqlproj
+
+
+# -----------------------------------------------------------------------------
+# OS ARTIFACTS
+# -----------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+
+# -----------------------------------------------------------------------------
+# EDITORS & IDEs
+# -----------------------------------------------------------------------------
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json.example
+
+# PyCharm / JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Vim / Neovim
+*.swp
+*.swo
+*.swn
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+Session.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+
+# -----------------------------------------------------------------------------
+# MISC
+# -----------------------------------------------------------------------------
+# Compressed archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# pytest
+.pytest_cache/

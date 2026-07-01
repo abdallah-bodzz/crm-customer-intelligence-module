@@ -1,0 +1,38 @@
+# =============================================================================
+# requirements.txt — CRM Customer Intelligence Module
+# Python 3.11
+#
+# Install: pip install -r requirements.txt
+#
+# LeIA (Portuguese VADER sentiment) is bundled locally in python/LeIA_lib/
+# and does not appear here — no pip install needed.
+# =============================================================================
+
+# Database
+sqlalchemy>=2.0,<3.0
+pyodbc>=5.0,<6.0
+
+# Data manipulation
+pandas>=2.1,<3.0
+numpy>=1.26,<2.0
+
+# Machine learning
+xgboost>=2.0,<3.0
+scikit-learn>=1.4,<2.0
+
+# Survival analysis (next-purchase timing)
+lifelines>=0.30,<1.0
+
+# Configuration
+python-dotenv>=1.0,<2.0
+
+# Reporting
+# (dq_report.py uses only stdlib + sqlalchemy + pandas; no extra dep needed)
+
+# Development / notebooks (optional — not required to run the pipeline)
+# jupyter>=1.0
+# matplotlib>=3.8,<4.0
+# seaborn>=0.13,<1.0
+# plotly>=5.18,<6.0
+# wordcloud>=1.9,<2.0
+# pillow>=10.0,<11.0
