@@ -1,0 +1,5 @@
+https://app.powerbi.com/view?r=eyJrIjoiMTBkZDE3YTMtNzZhZS00OWJlLWEyZTItM2U4NjQ4NjI4MzJiIiwidCI6ImVhZjYyNGM4LWEwYzQtNDE5NS04N2QyLTQ0M2U1ZDc1MTZjZCIsImMiOjh9
+
+<iframe title="CRM_Customer_Intelligence" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiMTBkZDE3YTMtNzZhZS00OWJlLWEyZTItM2U4NjQ4NjI4MzJiIiwidCI6ImVhZjYyNGM4LWEwYzQtNDE5NS04N2QyLTQ0M2U1ZDc1MTZjZCIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+
+https://community.fabric.microsoft.com/t5/Themes-Gallery/Warm-Clay-Modern-CRM-amp-Enterprise-Dashboard-Theme/m-p/5261981

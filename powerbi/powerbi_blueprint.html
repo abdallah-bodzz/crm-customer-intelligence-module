@@ -1,0 +1,436 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary)}
+.bp{padding:0 0 2rem}
+.section-sep{height:1px;background:var(--color-border-tertiary);margin:1.5rem 0}
+.page-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);margin-bottom:1rem;overflow:hidden;background:var(--color-background-primary)}
+.page-header{display:flex;align-items:center;gap:10px;padding:.85rem 1.25rem;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.page-badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.page-title{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.page-role{font-size:12px;color:var(--color-text-tertiary);margin-left:auto}
+.page-body{padding:.85rem 1.25rem}
+.layout-label{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem}
+.layout-box{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.5rem .75rem;margin-bottom:.5rem;font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.layout-box strong{font-weight:500;color:var(--color-text-primary)}
+.zone-grid{display:grid;gap:6px;margin-bottom:.75rem}
+.zone{border-radius:var(--border-radius-md);padding:.5rem .75rem;font-size:12px;line-height:1.4}
+.zone-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.zone-content{color:inherit;opacity:.85}
+.z-b{background:#E1F5EE;color:#085041}
+.z-p{background:#EEEDFE;color:#3C3489}
+.z-c{background:#FAECE7;color:#712B13}
+.z-a{background:#FAEEDA;color:#633806}
+.z-g{background:#F1EFE8;color:#444441}
+.z-bl{background:#E6F1FB;color:#0C447C}
+.z-gr{background:#EAF3DE;color:#27500A}
+.interax{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.5rem}
+.ia-tag{font-size:11px;padding:3px 9px;border-radius:12px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary)}
+.measures-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:.75rem}
+.measure-item{font-size:12px;padding:.4rem .6rem;background:var(--color-background-secondary);border-radius:var(--border-radius-md);color:var(--color-text-secondary)}
+.measure-item code{font-family:var(--font-mono);font-size:11px;color:var(--color-text-primary);display:block;margin-bottom:2px}
+.warn-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:12px;background:#FAEEDA;color:#633806;margin-top:4px}
+.note-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:12px;background:#E1F5EE;color:#085041;margin-top:4px}
+.section-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin:.75rem 0 .35rem}
+.row{display:flex;gap:8px;margin-bottom:6px}
+.col{flex:1;min-width:0}
+.source-chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:8px;background:var(--color-background-info);color:var(--color-text-info);border:0.5px solid var(--color-border-info)}
+.nav-row{display:flex;flex-wrap:wrap;gap:6px;padding:.75rem 1.25rem;border-top:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.nav-chip{font-size:11px;padding:3px 9px;border-radius:10px;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary)}
+</style>
+
+<div class="bp">
+
+<div style="padding:.5rem 0 1.25rem">
+  <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6">
+    <strong style="font-weight:500">Data connection:</strong> Import from SQL Server · all 3 views + 2 mart tables · no DAX transforms (math lives in SQL) · refresh_log as parameter source
+    <br><strong style="font-weight:500">Theme:</strong> Custom · dark navy accent (#2B2D42) · single font · no drop shadows · consistent 8px/16px spacing grid
+    <br><strong style="font-weight:500">Navigation:</strong> Left-rail button panel (bookmark-based) + drill-through to Customer 360 from every page · no top-nav bar
+    <br><strong style="font-weight:500">Colour encoding:</strong> Health tier (teal/amber/coral) · action type (coral=HIGH, amber=MED, gray=LOW) · segments (9-colour fixed palette, same across all pages)
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="page-header">
+    <span class="page-badge" style="background:#E1F5EE;color:#085041">P1</span>
+    <span class="page-title">Command centre</span>
+    <span class="page-role">CEO / head of retention · first screen on open</span>
+  </div>
+  <div class="page-body">
+    <div class="layout-label">Layout — asymmetric 3-zone stack</div>
+    <div class="zone-grid" style="grid-template-columns:2fr 1fr">
+      <div class="zone z-b">
+        <div class="zone-label">Zone A — top-left 65%</div>
+        <div class="zone-content">5 headline KPI cards in a horizontal strip. Not standard square tiles — each card is a <em>tall thin vertical</em> panel (48px wide, full height) with the metric number at bottom and a micro sparkline running the full card height. Cards: Total GMV · Active customers · Churn rate (rule-based) · HIGH-priority actions · Avg health score. The sparkline encodes trend direction not absolute values — no axis labels needed.</div>
+      </div>
+      <div class="zone z-p">
+        <div class="zone-label">Zone B — top-right 35%</div>
+        <div class="zone-content">Action queue donut: RETENTION (coral) / REACTIVATION (amber) / MONITOR (gray). Centre label = "38,531 flagged". Below donut: 3-row priority table (HIGH 11,957 / MED 26,574 / LOW 57,565) with colour-coded left border. No chart title — the visual is self-describing.</div>
+      </div>
+    </div>
+    <div class="zone-grid" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="zone z-g">
+        <div class="zone-label">Zone C1 — GMV by month</div>
+        <div class="zone-content">Area chart, Sept 2016 – Oct 2018. Vertical reference line at ML cutoff (May 2018). Annotation: "Train / Validate split". No gridlines — just the baseline and the area fill.</div>
+      </div>
+      <div class="zone z-g">
+        <div class="zone-label">Zone C2 — health tier donut</div>
+        <div class="zone-content">High / Medium / Low with % labels inside each segment. Small legend below. Colour matches the global tier palette used on all pages.</div>
+      </div>
+      <div class="zone z-g">
+        <div class="zone-label">Zone C3 — top 5 states bar</div>
+        <div class="zone-content">Horizontal bars, sorted by GMV. Right-aligned % label. Clicking a bar cross-filters the whole page. No axis labels on bars — the value IS the label.</div>
+      </div>
+    </div>
+    <div class="interax">
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> state slicer (multi)</span>
+      <span class="ia-tag"><i class="ti ti-calendar" aria-hidden="true"></i> date range (order date)</span>
+      <span class="ia-tag"><i class="ti ti-bookmark" aria-hidden="true"></i> bookmark: GMV view / churn view toggle</span>
+    </div>
+    <div class="note-pill"><i class="ti ti-arrow-right" aria-hidden="true"></i> drill-through → Customer 360 from action queue donut</div>
+  </div>
+  <div class="nav-row">
+    <span style="font-size:11px;color:var(--color-text-tertiary);margin-right:4px">sources:</span>
+    <span class="source-chip">vw_customer_health</span>
+    <span class="source-chip">vw_geo_performance</span>
+    <span class="source-chip">crm_action_queue</span>
+    <span class="source-chip">refresh_log</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="page-header">
+    <span class="page-badge" style="background:#EEEDFE;color:#3C3489">P2</span>
+    <span class="page-title">Customer 360</span>
+    <span class="page-role">Drill-through target · customer success · account view</span>
+  </div>
+  <div class="page-body">
+    <div class="layout-label">Layout — left sidebar + right detail panel</div>
+    <div class="row">
+      <div class="col" style="flex:0 0 220px">
+        <div class="zone z-p" style="height:100%">
+          <div class="zone-label">Left sidebar — customer identity card</div>
+          <div class="zone-content">Customer ID (truncated hash), state, city. Health score gauge (0–100, teal fill). Health tier badge. RFM segment pill. Action type + priority badge. "Days since last order" counter. "Churn probability" large % number. CLV prediction R$XX with CI band shown as ± range.</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="zone z-bl" style="margin-bottom:6px">
+          <div class="zone-label">Top-right — order timeline</div>
+          <div class="zone-content">Horizontal timeline strip: each order is a dot. Dot colour = review score (1=coral, 5=teal). Hover tooltip: order date, GMV, delivery delta, review score, sentiment label. Reference line at "180-day churn window" right of last order dot.</div>
+        </div>
+        <div class="zone-grid" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="zone z-g">
+            <div class="zone-label">Metric tile</div>
+            <div class="zone-content">Total GMV · total orders · AOV · freight paid (4 small cards)</div>
+          </div>
+          <div class="zone z-g">
+            <div class="zone-label">Delivery profile</div>
+            <div class="zone-content">Avg delivery delta days · pct late · worst order delivery bar</div>
+          </div>
+          <div class="zone z-g">
+            <div class="zone-label">Sentiment strip</div>
+            <div class="zone-content">Per-review compound score as coloured dots on a -1 → +1 axis. Avg sentiment score badge.</div>
+          </div>
+        </div>
+        <div class="zone z-a" style="margin-top:6px">
+          <div class="zone-label">Bottom-right — trigger reason</div>
+          <div class="zone-content">Plain-text display of trigger_reason from crm_action_queue. This is the "why" that a CRM analyst reads. Styled as a callout card, not a chart.</div>
+        </div>
+      </div>
+    </div>
+    <div class="interax">
+      <span class="ia-tag"><i class="ti ti-search" aria-hidden="true"></i> customer search slicer (top input)</span>
+      <span class="ia-tag"><i class="ti ti-arrow-back" aria-hidden="true"></i> back button (returns to drill-through source page)</span>
+    </div>
+    <div class="warn-pill"><i class="ti ti-alert-triangle" aria-hidden="true"></i> this page is drill-through only — disable direct navigation from left rail</div>
+  </div>
+  <div class="nav-row">
+    <span class="source-chip">vw_customer_health</span>
+    <span class="source-chip">mart.sentiment_scores</span>
+    <span class="source-chip">crm_action_queue</span>
+    <span class="source-chip">mart.clv_features</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="page-header">
+    <span class="page-badge" style="background:#FAECE7;color:#712B13">P3</span>
+    <span class="page-title">Churn & action risk</span>
+    <span class="page-role">Retention manager · daily operational view</span>
+  </div>
+  <div class="page-body">
+    <div class="layout-label">Layout — ranked list left + detail panel right</div>
+    <div class="row">
+      <div class="col" style="flex:0 0 55%">
+        <div class="zone z-c" style="margin-bottom:6px">
+          <div class="zone-label">Top strip — 4 churn KPIs</div>
+          <div class="zone-content">Rule-based churn rate 71% · Model avg churn prob 0.54 · HIGH-priority count 11,957 · At-risk GMV at stake R$1.9M (sum of total_gmv where action_type ≠ MONITOR)</div>
+        </div>
+        <div class="zone z-c">
+          <div class="zone-label">Main — ranked customer table</div>
+          <div class="zone-content">Scrollable table from vw_churn_signals. Columns: customer_id (short), churn_prob (bar sparkline), urgency_score (coloured dot), action_type (pill badge), primary_driver (text), CLV R$, days_since_last_order. Sorted by urgency_score DESC. Row click → drill-through to Customer 360. Conditional formatting: churn_prob &gt; 0.8 → coral row bg. Table shows top 500 customers (slicer controls this).</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="zone z-p" style="margin-bottom:6px">
+          <div class="zone-label">Churn driver breakdown</div>
+          <div class="zone-content">Horizontal bar chart: primary_driver counts (Recency / Delivery / Sentiment / Monetary). These come from vw_churn_signals.primary_driver. No legend needed — bars are labelled directly.</div>
+        </div>
+        <div class="zone z-p" style="margin-bottom:6px">
+          <div class="zone-label">Churn prob distribution</div>
+          <div class="zone-content">Histogram (10 buckets, 0.0–1.0). Reference line at deployed threshold 0.299. Dual-colour fill: below threshold = gray, above = coral. No axis title — self-describing.</div>
+        </div>
+        <div class="zone z-p">
+          <div class="zone-label">Segment × churn rate grid</div>
+          <div class="zone-content">Small 9-row table: segment name · churn rate (%) · customer count · colour-coded left border matching segment palette. Sorted by churn rate DESC. At Risk / Can't Lose / Hibernating / Lost = 100% — show these at top with coral border.</div>
+        </div>
+      </div>
+    </div>
+    <div class="interax">
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> action_type filter</span>
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> health_tier filter</span>
+      <span class="ia-tag"><i class="ti ti-adjustments" aria-hidden="true"></i> churn threshold slider (0.1–0.9, reference line only — does not rerun model)</span>
+      <span class="ia-tag"><i class="ti ti-bookmark" aria-hidden="true"></i> bookmark: HIGH only / all flagged toggle</span>
+    </div>
+    <div class="note-pill"><i class="ti ti-arrow-right" aria-hidden="true"></i> row click → Customer 360 drill-through</div>
+  </div>
+  <div class="nav-row">
+    <span class="source-chip">vw_churn_signals</span>
+    <span class="source-chip">vw_customer_health</span>
+    <span class="source-chip">crm_action_queue</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="page-header">
+    <span class="page-badge" style="background:#CECBF6;color:#26215C">P4</span>
+    <span class="page-title">Segmentation & RFM</span>
+    <span class="page-role">CRM analyst · segment strategy · campaign planning</span>
+  </div>
+  <div class="page-body">
+    <div class="layout-label">Layout — 60/40 split with small-multiple grid at bottom</div>
+    <div class="row">
+      <div class="col" style="flex:0 0 60%">
+        <div class="zone z-p" style="margin-bottom:6px">
+          <div class="zone-label">RFM scatter — primary visual (large)</div>
+          <div class="zone-content">X = Recency score (1–5) · Y = Monetary score (1–5) · dot size = Frequency score · colour = segment (fixed 9-colour palette). 96,096 dots — use density rendering or hex-bin aggregation, not individual points. Clicking a cluster cross-filters the page. This is the primary insight visual — give it 60% of the left column height.</div>
+        </div>
+        <div class="zone z-p">
+          <div class="zone-label">Segment × action heatmap</div>
+          <div class="zone-content">Matrix: rows = 9 segments · cols = RETENTION / REACTIVATION / MONITOR. Cell value = customer count. Colour intensity = count (light → dark teal). This answers "which segments dominate each action bucket?" — the action_dev_summary cross-tab made visual.</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="zone z-a" style="margin-bottom:6px">
+          <div class="zone-label">Segment distribution bar (right panel)</div>
+          <div class="zone-content">Horizontal bars, sorted by count. Colour matches scatter palette. Each bar has 2 sub-labels: customer count + % of total. Width = 40% of page.</div>
+        </div>
+        <div class="zone-grid" style="grid-template-columns:1fr 1fr">
+          <div class="zone z-g">
+            <div class="zone-label">Avg GMV by segment</div>
+            <div class="zone-content">Small bar chart. Champions highest even though small count — this is the GMV concentration insight.</div>
+          </div>
+          <div class="zone z-g">
+            <div class="zone-label">Avg health score by segment</div>
+            <div class="zone-content">Small horizontal bar. Champions at top, Lost at bottom. Visual confirmation of health score model.</div>
+          </div>
+          <div class="zone z-g">
+            <div class="zone-label">K-means clusters</div>
+            <div class="zone-content">Pie / donut showing 5 cluster sizes (21K / 25K / 20K / 13K / 15K). Tooltip: avg R/F/M per cluster. Subtitle: "K=5, silhouette 0.336".</div>
+          </div>
+          <div class="zone z-g">
+            <div class="zone-label">Segment GMV share</div>
+            <div class="zone-content">Treemap or stacked bar. "Frequent Low-Spender" is the largest segment (23%) but not the highest GMV — show this contrast explicitly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="interax">
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> segment multi-select</span>
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> health tier filter</span>
+      <span class="ia-tag"><i class="ti ti-bookmark" aria-hidden="true"></i> bookmark: RFM rule view / K-means cluster view toggle</span>
+    </div>
+    <div class="note-pill"><i class="ti ti-arrow-right" aria-hidden="true"></i> scatter click → Customer 360 drill-through</div>
+  </div>
+  <div class="nav-row">
+    <span class="source-chip">vw_customer_health</span>
+    <span class="source-chip">mart.rfm_features</span>
+    <span class="source-chip">crm_action_queue</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="page-header">
+    <span class="page-badge" style="background:#C0DD97;color:#173404">P5</span>
+    <span class="page-title">CLV & predicted value</span>
+    <span class="page-role">Revenue forecasting · customer value prioritisation</span>
+  </div>
+  <div class="page-body">
+    <div class="layout-label">Layout — top metrics strip + two-column body</div>
+    <div class="zone z-gr" style="margin-bottom:6px">
+      <div class="zone-label">Top strip — 4 CLV KPIs</div>
+      <div class="zone-content">Customers with CLV prediction 71,186 (74.1%) · Median predicted CLV R$0.93 · Max CLV R$945 · Total predicted portfolio value R$X (SUM clv_predicted_6m). Note: CLV values are low because 99.2% of customers had zero post-cutoff GMV — this is a dataset temporal boundary issue, not a model error. Add a ℹ tooltip explaining this.</div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="zone z-gr" style="margin-bottom:6px">
+          <div class="zone-label">CLV distribution histogram (main visual)</div>
+          <div class="zone-content">Log-scale X axis (CLV predicted 6m). Y = customer count. Colour: &lt;median = gray, &gt;median = teal, &gt;p90 = green. Reference lines at p50 / p75 / p90. This reveals the heavy right tail — a small number of customers have CLV &gt; R$100. The log scale is important here and should be called out explicitly on the axis.</div>
+        </div>
+        <div class="zone z-gr">
+          <div class="zone-label">CLV by segment (box plot or strip)</div>
+          <div class="zone-content">Each segment's CLV distribution. Champions should have the widest spread. This is more honest than just avg CLV bars — it shows variance. Use either a box-whisker or a dot-strip chart (Power BI scatter can simulate this).</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="zone z-bl" style="margin-bottom:6px">
+          <div class="zone-label">CI band chart</div>
+          <div class="zone-content">X = customers sorted by predicted CLV · Y = clv_ci_lower / clv_predicted_6m / clv_ci_upper · render as area band (lower to upper) with a line for the point estimate. Shows uncertainty grows at the high end. Practical label: "Wider band = less certain prediction".</div>
+        </div>
+        <div class="zone z-bl" style="margin-bottom:6px">
+          <div class="zone-label">CLV vs churn risk quadrant</div>
+          <div class="zone-content">Scatter: X = churn_probability · Y = clv_predicted_6m · quadrant lines at threshold 0.6 and CLV median. 4 quadrants labelled: "Retain" (high CLV, high churn) · "Grow" (high CLV, low churn) · "Reactivate" (low CLV, high churn) · "Monitor" (low CLV, low churn). This is the most action-driven visual on this page.</div>
+        </div>
+        <div class="zone z-bl">
+          <div class="zone-label">Feature importance bar</div>
+          <div class="zone-content">Top 8 features from clv_dev_summary: days_since_last_order (27.6%) / avg_order_value (23.2%) / order_frequency_per_month (22.6%) / total_orders (8.5%) / tenure_months (8.1%) / avg_delivery_delta (5.4%). Static chart — no filter interaction. Add subtitle: "XGBoost feature importance, CLV regression model".</div>
+        </div>
+      </div>
+    </div>
+    <div class="interax">
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> segment filter</span>
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> state filter</span>
+      <span class="ia-tag"><i class="ti ti-adjustments" aria-hidden="true"></i> CLV threshold slider (for quadrant line)</span>
+    </div>
+    <div class="note-pill"><i class="ti ti-arrow-right" aria-hidden="true"></i> quadrant scatter click → Customer 360 drill-through</div>
+  </div>
+  <div class="nav-row">
+    <span class="source-chip">vw_customer_health</span>
+    <span class="source-chip">mart.clv_features</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="page-header">
+    <span class="page-badge" style="background:#B5D4F4;color:#042C53">P6</span>
+    <span class="page-title">Geo intelligence</span>
+    <span class="page-role">Territory manager · regional operations · delivery risk</span>
+  </div>
+  <div class="page-body">
+    <div class="layout-label">Layout — map left (60%) + ranked state panel right (40%)</div>
+    <div class="row">
+      <div class="col" style="flex:0 0 60%">
+        <div class="zone z-bl">
+          <div class="zone-label">Brazil filled map — primary visual</div>
+          <div class="zone-content">State polygons filled by selected metric (GMV / churn rate / pct late deliveries / avg review score). Bookmark toggles which metric drives the colour fill. Default: GMV (teal ramp, SP darkest). State click cross-filters the right panel. Tooltip on hover: state name · customer count · total GMV · churn rate · avg delivery delta · avg review score. SP = R$5.9M GMV (37.4% of total). CE / BA / AL = worst delivery performance.</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="zone z-bl" style="margin-bottom:6px">
+          <div class="zone-label">State ranking table</div>
+          <div class="zone-content">27 rows, scrollable. Columns: state · GMV · customers · churn% · avg late% · avg review. Conditional formatting: churn% &gt; 73% → coral. pct_late &gt; 10% → amber. Sorts by clicked column header. This table and the map cross-filter each other.</div>
+        </div>
+        <div class="zone-grid" style="grid-template-columns:1fr 1fr">
+          <div class="zone z-g">
+            <div class="zone-label">GMV concentration</div>
+            <div class="zone-content">Top 5 states = 73.9% GMV. Show as bar with "other" collapsed bucket. SP bar is ~3x all others.</div>
+          </div>
+          <div class="zone z-g">
+            <div class="zone-label">Delivery vs satisfaction</div>
+            <div class="zone-content">Scatter: X = avg_pct_late · Y = avg_review_score · one dot per state · dot size = customer count. RJ and CE should appear as outliers — high late rate + lower review score.</div>
+          </div>
+        </div>
+        <div class="zone z-a">
+          <div class="zone-label">Worst/best delivery states</div>
+          <div class="zone-content">Two 5-item lists side-by-side: "Best delivery" (RO/AM/PA/MT/PE) in teal · "Worst delivery" (CE/BA/ES/MA/AL) in coral. Static text cards, no interaction needed.</div>
+        </div>
+      </div>
+    </div>
+    <div class="interax">
+      <span class="ia-tag"><i class="ti ti-bookmark" aria-hidden="true"></i> map metric: GMV / Churn rate / Late delivery / Review score</span>
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> action_type filter (see which states have most HIGH-priority customers)</span>
+    </div>
+    <div class="note-pill"><i class="ti ti-arrow-right" aria-hidden="true"></i> state click → cross-filters all visuals + enables drill-through to Churn page pre-filtered</div>
+  </div>
+  <div class="nav-row">
+    <span class="source-chip">vw_geo_performance</span>
+    <span class="source-chip">vw_customer_health</span>
+    <span class="source-chip">crm_action_queue</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="page-header">
+    <span class="page-badge" style="background:#F5C4B3;color:#4A1B0C">P7</span>
+    <span class="page-title">Sentiment & NLP</span>
+    <span class="page-role">CX analyst · product quality · review monitoring</span>
+  </div>
+  <div class="page-body">
+    <div class="layout-label">Layout — 3-row stack (KPIs → distribution → trend)</div>
+    <div class="zone z-c" style="margin-bottom:6px">
+      <div class="zone-label">Top strip — NLP KPIs</div>
+      <div class="zone-content">Review coverage 41.4% (40,641 / 99,224) · Positive 51.9% · Neutral 33.0% · Negative 15.1% · Avg compound score (overall). Cards are colour-coded: positive = teal, neutral = gray, negative = coral. No titles — colour and label are enough.</div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="zone z-c" style="margin-bottom:6px">
+          <div class="zone-label">Compound score distribution</div>
+          <div class="zone-content">Histogram: X = compound score (-1 to +1) · Y = review count · 3-colour fill: negative (coral, left of -0.05) / neutral (gray, middle) / positive (teal, right of +0.05). Threshold lines at -0.05 and +0.05 (LeIA standard boundaries).</div>
+        </div>
+        <div class="zone z-c">
+          <div class="zone-label">Sentiment by review score (1–5)</div>
+          <div class="zone-content">Stacked bar: one bar per star rating (1–5) · stacked by sentiment label (coral / gray / teal). This reveals: 1-star reviews are mostly negative (obvious) but there is a notable positive-sentiment 1-star cluster — worth flagging as "possible sarcasm or mistaken rating".</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="zone z-p" style="margin-bottom:6px">
+          <div class="zone-label">Sentiment trend by month</div>
+          <div class="zone-content">Line chart: monthly avg compound score. Overlay: monthly order volume as a faint area fill on secondary Y axis. Does sentiment improve or degrade as volume grew? This is the operational question. Date range: Sept 2016 – Oct 2018.</div>
+        </div>
+        <div class="zone z-p" style="margin-bottom:6px">
+          <div class="zone-label">Avg sentiment by action type</div>
+          <div class="zone-content">3-bar horizontal chart: RETENTION (0.16) / REACTIVATION (0.19) / MONITOR (0.22). Colour matches action type palette. Shows sentiment is consistently lower for flagged-action customers — validates using sentiment as a churn predictor feature.</div>
+        </div>
+        <div class="zone z-p">
+          <div class="zone-label">Sentiment by segment</div>
+          <div class="zone-content">Small bar chart: avg_sentiment_score per RFM segment. Champions expected highest. At Risk / Hibernating expected lowest. Uses segment colour palette.</div>
+        </div>
+      </div>
+    </div>
+    <div class="interax">
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> sentiment label filter (positive / neutral / negative)</span>
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> review score (1–5) slicer</span>
+      <span class="ia-tag"><i class="ti ti-filter" aria-hidden="true"></i> segment filter</span>
+      <span class="ia-tag"><i class="ti ti-calendar" aria-hidden="true"></i> date range filter</span>
+    </div>
+    <div class="note-pill"><i class="ti ti-arrow-right" aria-hidden="true"></i> bar segment click → cross-filters distribution + drill-through to Churn page filtered by that segment</div>
+  </div>
+  <div class="nav-row">
+    <span class="source-chip">mart.sentiment_scores</span>
+    <span class="source-chip">vw_customer_health</span>
+  </div>
+</div>
+
+<div style="margin-top:1.25rem;padding:1rem 1.25rem;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);background:var(--color-background-secondary)">
+  <div style="font-size:13px;font-weight:500;margin-bottom:.6rem">Global elements — apply to all pages</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6">
+      <strong style="font-weight:500;color:var(--color-text-primary)">Left navigation rail</strong><br>
+      Vertical icon+label buttons for P1/P3/P4/P5/P6/P7. P2 is bookmark-only. Each button = bookmark action. Active page = teal left border. Width 140px. Never collapses. No Power BI default page tabs — hide them.
+    </div>
+    <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6">
+      <strong style="font-weight:500;color:var(--color-text-primary)">Data-as-of banner</strong><br>
+      Thin strip at page top: "Data as of Oct 17 2018 · ML cutoff May 1 2018 · Churn window 180 days". Reads from refresh_log via a card visual. Always visible on every page. Muted gray text — informational, not primary.
+    </div>
+    <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6">
+      <strong style="font-weight:500;color:var(--color-text-primary)">Colour encoding — consistent across all pages</strong><br>
+      Health: High=teal / Med=amber / Low=coral. Actions: RETENTION=coral / REACTIVATION=amber / MONITOR=gray. Segments: fixed 9-colour (Champions=teal, Lost=gray, At Risk=coral, others=purple/blue/green ramp). Never reuse a colour for a different concept on the same page.
+    </div>
+    <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6">
+      <strong style="font-weight:500;color:var(--color-text-primary)">Bookmarks to implement</strong><br>
+      Command centre: GMV view / Churn view. Churn: HIGH only / all flagged. Segmentation: RFM rule view / K-means view. Geo map: 4 metric toggles. CLV quadrant: threshold slider reference line. Total: ~10 bookmarks. All triggered by button visuals — no slicer panel.
+    </div>
+  </div>
+</div>
+
+</div>
